@@ -1,0 +1,8 @@
+/env
+*.env
+
+#migrations
+api/migrations/*
+
+# Ignore __pycache__ directories
+**/__pycache__/
