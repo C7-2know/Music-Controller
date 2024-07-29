@@ -20,12 +20,13 @@ class GetRoom(APIView):
 
     def get(self, request,format=None):
         code=request.GET.get(self.lookup_url_kwarg)
-        print(code)
+        print('code',code)
         if code!=None:
             room=Room.objects.filter(code=code)
             if len(room)>0:
                 data=RoomSerializer(room[0]).data
-                data["is_host"]=self.request.session.session_key==room[0].host
+                print(self.request.session.session_key==room[0].host)
+                data["is_host"]=(self.request.session.session_key==room[0].host)
                 return Response(data,status=status.HTTP_200_OK)
             return Response({'Bad Request': "Invalid Room Code"},status=status.HTTP_404_NOT_FOUND)
         return Response({'Bad Request': "Code parameter not found in request"},status=status.HTTP_400_BAD_REQUEST)
