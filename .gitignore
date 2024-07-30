@@ -6,3 +6,11 @@ api/migrations/*
 
 # Ignore __pycache__ directories
 **/__pycache__/
+
+# Ignore frontend packages
+frontend/node_modules/*
+frontend/build/*
+frontend/migrations/*
+
+# Ignore spotify migrations
+spotify/migrations/*
